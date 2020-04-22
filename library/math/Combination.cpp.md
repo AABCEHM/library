@@ -31,7 +31,7 @@ layout: default
 
 * category: <a href="../../index.html#7e676e9e663beb40fd133f5ee24487c2">math</a>
 * <a href="{{ site.github.repository_url }}/blob/master/math/Combination.cpp">View this file on GitHub</a>
-    - Last commit date: 2020-04-22 23:37:29+09:00
+    - Last commit date: 2020-04-23 03:07:27+09:00
 
 
 
@@ -53,23 +53,21 @@ typedef long long ll;
 const ll mod = 1000000007;
 #endif
 //BEGIN CUT HERE
-ll inv[10000100];
-ll FactorialInv[10000100];
-ll Factorial[10000100];
+vector<ll> inv, FactorialInv, Factorial;
 ll beki(ll a, ll b){
+    ll ret = 1 % mod;
     a %= mod;
-    if(b == 0){
-        return 1;
+    while(b) {
+        if(b & 1LL) ret = ret * a % mod;
+        a = a * a % mod;
+        b >>= 1;
     }
-    ll ans = beki(a, b / 2);
-    ans = ans * ans % mod;
-    if(b % 2 == 1){
-        ans = ans * a % mod;
-    }
-    return ans;
+    return ret;
 }
-void init_combination(){
-    const int MAX = 10000002;
+void init_combination(ll MAX){
+    Factorial.resize(MAX + 1);
+    FactorialInv.resize(MAX + 1);
+    inv.resize(MAX + 1);
     Factorial[0] = 1;
     inv[0] = 1;
     for(int i = 1; i <= MAX; i++){
@@ -88,6 +86,7 @@ ll combination(ll a, ll b){
         return 1;
     }
     if(a < b) return 0;
+    if(b < 0) return 0;
     ll ans = Factorial[a] * FactorialInv[b] % mod;
     ans = ans * FactorialInv[a - b] % mod;
     return ans;
@@ -99,7 +98,6 @@ int main() {
     return 0;
 }
 #endif
-
 ```
 {% endraw %}
 
@@ -114,23 +112,21 @@ typedef long long ll;
 const ll mod = 1000000007;
 #endif
 //BEGIN CUT HERE
-ll inv[10000100];
-ll FactorialInv[10000100];
-ll Factorial[10000100];
+vector<ll> inv, FactorialInv, Factorial;
 ll beki(ll a, ll b){
+    ll ret = 1 % mod;
     a %= mod;
-    if(b == 0){
-        return 1;
+    while(b) {
+        if(b & 1LL) ret = ret * a % mod;
+        a = a * a % mod;
+        b >>= 1;
     }
-    ll ans = beki(a, b / 2);
-    ans = ans * ans % mod;
-    if(b % 2 == 1){
-        ans = ans * a % mod;
-    }
-    return ans;
+    return ret;
 }
-void init_combination(){
-    const int MAX = 10000002;
+void init_combination(ll MAX){
+    Factorial.resize(MAX + 1);
+    FactorialInv.resize(MAX + 1);
+    inv.resize(MAX + 1);
     Factorial[0] = 1;
     inv[0] = 1;
     for(int i = 1; i <= MAX; i++){
@@ -149,6 +145,7 @@ ll combination(ll a, ll b){
         return 1;
     }
     if(a < b) return 0;
+    if(b < 0) return 0;
     ll ans = Factorial[a] * FactorialInv[b] % mod;
     ans = ans * FactorialInv[a - b] % mod;
     return ans;
