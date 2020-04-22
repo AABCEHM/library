@@ -38,18 +38,12 @@ layout: default
 
 ### math
 
-* :warning: <a href="library/math/Combination.cpp.html">math/Combination.cpp</a>
-
-
-<div id="0d0c91c0cca30af9c1c9faef0cf04aa9"></div>
-
-### test/aoj
-
-* :warning: <a href="library/test/aoj/2335.cpp.html">test/aoj/2335.cpp</a>
+* :heavy_check_mark: <a href="library/math/Combination.cpp.html">math/Combination.cpp</a>
 
 
 ## Verify Files
 
+* :heavy_check_mark: <a href="verify/test/aoj/2335.test.cpp.html">test/aoj/2335.test.cpp</a>
 * :heavy_check_mark: <a href="verify/test/aoj/example.test.cpp.html">test/aoj/example.test.cpp</a>
 
 
