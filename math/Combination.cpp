@@ -5,23 +5,21 @@ typedef long long ll;
 const ll mod = 1000000007;
 #endif
 //BEGIN CUT HERE
-ll inv[10000100];
-ll FactorialInv[10000100];
-ll Factorial[10000100];
+vector<ll> inv, FactorialInv, Factorial;
 ll beki(ll a, ll b){
+    ll ret = 1 % mod;
     a %= mod;
-    if(b == 0){
-        return 1;
+    while(b) {
+        if(b & 1LL) ret = ret * a % mod;
+        a = a * a % mod;
+        b >>= 1;
     }
-    ll ans = beki(a, b / 2);
-    ans = ans * ans % mod;
-    if(b % 2 == 1){
-        ans = ans * a % mod;
-    }
-    return ans;
+    return ret;
 }
-void init_combination(){
-    const int MAX = 10000002;
+void init_combination(ll MAX){
+    Factorial.resize(MAX + 1);
+    FactorialInv.resize(MAX + 1);
+    inv.resize(MAX + 1);
     Factorial[0] = 1;
     inv[0] = 1;
     for(int i = 1; i <= MAX; i++){
@@ -40,6 +38,7 @@ ll combination(ll a, ll b){
         return 1;
     }
     if(a < b) return 0;
+    if(b < 0) return 0;
     ll ans = Factorial[a] * FactorialInv[b] % mod;
     ans = ans * FactorialInv[a - b] % mod;
     return ans;

@@ -9,7 +9,7 @@ const ll mod = 1000000007;
 #undef call_from_test
 
 int main() {
-    init_combination();
+    init_combination(10000000);
     ll N, M, K;
     ll ans = 0;
     cin >> N >> M >> K;
